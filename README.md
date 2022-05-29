@@ -19,9 +19,10 @@ N.B.: Downloads 6GB MSR-VTT videos to ./data
 
 expected results for 16 frames:
 ```
-{'R1': 34.5, 'R5': 56.1, 'R10': 65.3, 'R50': 85.5, 'MedR': 4.0, 'MeanR': 37.604} agg: query-scoring, temp: 0.1
-{'R1': 33.4, 'R5': 55.0, 'R10': 65.1, 'R50': 84.7, 'MedR': 4.0, 'MeanR': 38.393} agg: mean-pooling, temp:
+Mean-pooling:     {'R1': 33.4, 'R5': 55.0, 'R10': 65.1, 'R50': 84.7, 'MedR': 4.0, 'MeanR': 38.393}
+Q-scoring(t=0.1): {'R1': 34.5, 'R5': 56.1, 'R10': 65.3, 'R50': 85.5, 'MedR': 4.0, 'MeanR': 37.604}
 ```
+
 
 As you can see, query scoring provides a zero-shot performance improvement. This scoring function can be input to the loss function during training to achieve a more substantial boost.
 
