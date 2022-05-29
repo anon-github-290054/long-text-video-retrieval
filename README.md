@@ -17,17 +17,21 @@ N.B.: Downloads 6GB MSR-VTT videos to ./data
 
 `python run_msr_retrieval --num_frames 16`
 
-you can play around with different temperature values (tau), when temperature << 1, it approximates max, when temperature >> 1 it approximates mean-pooling.
+expected results for 16 frames:
+```
+{'R1': 34.5, 'R5': 56.1, 'R10': 65.3, 'R50': 85.5, 'MedR': 4.0, 'MeanR': 37.604} agg: query-scoring, temp: 0.1
+{'R1': 33.4, 'R5': 55.0, 'R10': 65.1, 'R50': 84.7, 'MedR': 4.0, 'MeanR': 38.393} agg: mean-pooling, temp:
+```
+
+As you can see, query scoring provides a zero-shot performance improvement. This scoring function can be input to the loss function during training to achieve a more substantial boost.
+
+You can play around with different temperature values (tau), when temperature << 1, it approximates max, when temperature >> 1 it approximates mean-pooling.
 
 for best results, use 120 frames (takes longer, and needs more RAM, chunking required)
 `python run_msr_retrieval --num_frames 120 --batch_size 1 --num_workers 1`
 
-expected results 16 frames:
 
-```
-{'R1': 34.5, 'R5': 56.1, 'R10': 65.3, 'R50': 85.5, 'MedR': 4.0, 'MeanR': 37.604} agg: mean-pooling, temp:
-{'R1': 33.4, 'R5': 55.0, 'R10': 65.1, 'R50': 84.7, 'MedR': 4.0, 'MeanR': 38.393} agg: query-scoring, temp: 0.1
-```
+
 
 
 
